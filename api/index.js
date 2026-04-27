@@ -1,4 +1,6 @@
 const express = require('express');
+const serverless = require('serverless-http');
+
 const app = express();
 
 app.use(express.json());
@@ -29,4 +31,5 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no trobada' });
 });
 
-module.exports = app;
+// 🔥 AIXÒ ÉS LA CLAU
+module.exports = serverless(app);
